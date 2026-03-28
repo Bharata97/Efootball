@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Link Bio - elasepp Professional</title>
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-dark: #0a0a0c;
+            --card-dark: rgba(22, 22, 26, 0.6);
+            --accent-blue: #3b82f6;
+            --text-white: #f8fafc;
+            --text-dim: #94a3b8;
+            --border-pro: rgba(255, 255, 255, 0.08);
+        }
+
+        body {
+            margin: 0; padding: 0;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-white);
+            display: flex; justify-content: center;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* --- EFEK LATAR BELAKANG BERGERAK --- */
+        .bg-animation {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            z-index: -1;
+            overflow: hidden;
+        }
+
+        .orb {
+            position: absolute; border-radius: 50%;
+            filter: blur(80px);
+            opacity: 0.12;
+            animation: moveOrb linear infinite;
+        }
+
+        .orb-1 { width: 400px; height: 400px; background: var(--accent-blue); top: -10%; left: -10%; animation-duration: 25s; }
+        .orb-2 { width: 300px; height: 300px; background: #9c27b0; bottom: 10%; right: -5%; animation-duration: 30s; animation-delay: -5s; }
+        .orb-3 { width: 250px; height: 250px; background: #00bcd4; top: 40%; left: 50%; animation-duration: 20s; animation-delay: -10s; }
+
+        @keyframes moveOrb {
+            0% { transform: translate(0, 0) scale(1); }
+            25% { transform: translate(50px, 50px) scale(1.1); }
+            50% { transform: translate(-50px, 100px) scale(1); }
+            75% { transform: translate(-100px, -50px) scale(0.9); }
+            100% { transform: translate(0, 0) scale(1); }
+        }
+
+        /* RUNNING TEXT */
+        .marquee-container {
+            position: fixed; top: 0; width: 100%;
+            background: rgba(10, 10, 12, 0.9);
+            backdrop-filter: blur(15px);
+            color: var(--accent-blue); padding: 12px 0;
+            font-size: 0.75rem; font-weight: 700;
+            z-index: 100; overflow: hidden;
+            display: flex; border-bottom: 1px solid var(--border-pro);
+        }
+
+        .marquee-content {
+            display: flex; white-space: nowrap;
+            animation: marquee-infinite 20s linear infinite;
+        }
+
+        .marquee-item { padding-right: 100px; }
+
+        @keyframes marquee-infinite {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+
+        .container {
+            width: 100%; max-width: 410px;
+            padding: 110px 24px 60px; text-align: center;
+            position: relative;
+        }
+
+        /* PROFILE */
+        .profile-img {
+            width: 105px; height: 105px; border-radius: 35px;
+            object-fit: cover; border: 2px solid var(--border-pro);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+            margin-bottom: 15px;
+        }
+
+        h1 { margin: 10px 0 5px; font-size: 1.6rem; font-weight: 800; }
+        .verified-badge { color: var(--accent-blue); font-size: 1.1rem; margin-left: 5px; }
+        .tagline { font-size: 0.9rem; color: var(--text-dim); margin-bottom: 40px; }
+
+        /* LINKS GRID */
+        .links-grid { display: flex; flex-direction: column; gap: 15px; }
+
+        .link-card {
+            background: var(--card-dark);
+            border: 1px solid var(--border-pro);
+            padding: 18px 22px; border-radius: 16px;
+            text-decoration: none; color: var(--text-white);
+            font-weight: 600; display: flex; align-items: center;
+            justify-content: space-between; transition: 0.3s;
+            backdrop-filter: blur(5px);
+        }
+
+        .link-card:hover {
+            border-color: var(--accent-blue);
+            transform: translateY(-3px);
+            background: rgba(28, 28, 33, 0.8);
+        }
+
+        .link-card i { color: var(--accent-blue); font-size: 1.2rem; }
+
+        /* SOCIAL MEDIA */
+        .social-wrap {
+            margin-top: 50px; display: grid;
+            grid-template-columns: repeat(4, 1fr); gap: 12px;
+        }
+
+        .social-box {
+            background: var(--card-dark); border: 1px solid var(--border-pro);
+            padding: 16px 0; border-radius: 14px;
+            font-size: 1.4rem; color: var(--text-white); transition: 0.2s;
+            backdrop-filter: blur(5px);
+        }
+
+        .social-box:hover { background: var(--accent-blue); transform: translateY(-5px); }
+
+        footer { margin-top: 60px; font-size: 0.7rem; font-weight: 700; color: var(--text-dim); letter-spacing: 2px; }
+    </style>
+</head>
+<body onclick="playEffects(event)">
+
+    <div class="bg-animation">
+        <div class="orb orb-1"></div>
+        <div class="orb orb-2"></div>
+        <div class="orb orb-3"></div>
+    </div>
+
+    <div class="marquee-container">
+        <div class="marquee-content">
+            <div class="marquee-item">🚀 OFFICIAL PARTNER EFOOTBALL • JOKI DIVISI PROFESIONAL • AKUN READY STOCK • FAST RESPOND VIA WHATSAPP • </div>
+            <div class="marquee-item">🚀 OFFICIAL PARTNER EFOOTBALL • JOKI DIVISI PROFESIONAL • AKUN READY STOCK • FAST RESPOND VIA WHATSAPP • </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <img src="Log.jpg" alt="Profile" class="profile-img">
+        
+        <h1>@Bharatayudha<i class="fas fa-check-circle verified-badge"></i></h1>
+        <div class="tagline">Gaming Specialist & Creative Solutions</div>
+
+        <div class="links-grid">
+            <a href="#" class="link-card"><span>Instagram Portfolio</span><i class="fa-brands fa-instagram"></i></a>
+            <a href="#" class="link-card"><span>Catalog Premium Accounts</span><i class="fa-solid fa-store"></i></a>
+            <a href="#" class="link-card"><span>Joki Pro Service</span><i class="fa-solid fa-gamepad"></i></a>
+            <a href="#" class="link-card"><span>Support via Sociabuzz</span><i class="fa-solid fa-heart"></i></a>
+            <a href="#" class="link-card"><span>Traktir via Saweria</span><i class="fa-solid fa-coffee"></i></a>
+        </div>
+
+        <div class="social-wrap">
+            <a href="#" class="social-box"><i class="fa-brands fa-facebook-f"></i></a>
+            <a href="#" class="social-box"><i class="fa-brands fa-whatsapp"></i></a>
+            <a href="#" class="social-box"><i class="fa-brands fa-instagram"></i></a>
+            <a href="#" class="social-box"><i class="fa-brands fa-tiktok"></i></a>
+        </div>
+
+        <footer>© 2026 BHARATAYUDHA CORE</footer>
+    </div>
+
+    <script>
+        function playEffects(e) {
+            confetti({
+                particleCount: 15, spread: 40,
+                origin: { x: e.clientX / window.innerWidth, y: e.clientY / window.innerHeight },
+                colors: ['#3b82f6', '#ffffff']
+            });
+        }
+    </script>
+</body>
+</html>
