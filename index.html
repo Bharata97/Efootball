@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Link Bio - Bharatayudha Professional</title>
+    <title>Let's Order - Bharatayudha</title>
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -16,6 +16,7 @@
             --text-white: #f8fafc;
             --text-dim: #94a3b8;
             --border-pro: rgba(255, 255, 255, 0.08);
+            --rating-yellow: #facc15; 
         }
 
         body {
@@ -24,114 +25,112 @@
             background-color: var(--bg-dark);
             color: var(--text-white);
             display: flex; justify-content: center;
-            overflow-x: hidden;
-            position: relative;
-            min-height: 100vh;
-            cursor: crosshair;
+            overflow-x: hidden; min-height: 100vh;
         }
 
-        .bg-animation {
-            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            z-index: -1; overflow: hidden;
-        }
+        .bg-animation { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; }
+        .orb { position: absolute; border-radius: 50%; filter: blur(80px); opacity: 0.15; animation: moveOrb 8s linear infinite; }
+        .orb-1 { width: 450px; height: 450px; background: var(--accent-blue); top: -15%; left: -15%; }
+        .orb-2 { width: 350px; height: 350px; background: var(--accent-purple); bottom: -10%; right: -10%; }
+        @keyframes moveOrb { 0%, 100% { transform: translate(0,0); } 50% { transform: translate(50px, 80px); } }
 
-        .orb {
-            position: absolute; border-radius: 50%;
-            filter: blur(80px); opacity: 0.15;
-            animation: moveOrb linear infinite;
-        }
-
-        .orb-1 { width: 450px; height: 450px; background: var(--accent-blue); top: -15%; left: -15%; animation-duration: 8s; }
-        .orb-2 { width: 350px; height: 350px; background: var(--accent-purple); bottom: -10%; right: -10%; animation-duration: 10s; }
-
-        @keyframes moveOrb {
-            0% { transform: translate(0, 0) scale(1); }
-            50% { transform: translate(100px, 150px) scale(1.1); }
-            100% { transform: translate(0, 0) scale(1); }
-        }
-
+        /* --- MARQUEE REFINED & FAST --- */
         .marquee-container {
-            position: fixed; top: 0; width: 100%;
-            background: rgba(10, 10, 12, 0.95);
-            backdrop-filter: blur(15px);
-            color: var(--accent-blue); padding: 12px 0;
-            font-size: 0.75rem; font-weight: 700;
-            z-index: 100; border-bottom: 1px solid var(--border-pro);
+            position: fixed; top: 0; width: 100%; background: rgba(10, 10, 12, 0.95);
+            backdrop-filter: blur(15px); color: var(--accent-blue); padding: 14px 0;
+            font-size: 0.7rem; font-weight: 700; z-index: 100; border-bottom: 1px solid rgba(59, 130, 246, 0.1);
+            letter-spacing: 1.2px; text-transform: uppercase;
         }
-
-        .marquee-content {
-            display: flex; white-space: nowrap;
-            animation: marquee-infinite 8s linear infinite;
-        }
-
-        .marquee-item { padding-right: 100px; }
-
-        @keyframes marquee-infinite {
-            0% { transform: translateX(0); }
-            100% { transform: translateX(-50%); }
-        }
+        .marquee-content { display: flex; white-space: nowrap; animation: marquee-infinite 10s linear infinite; } /* SPEED UP TO 10s */
+        .marquee-item { padding-right: 60px; }
+        .marquee-item span { color: var(--text-white); }
+        @keyframes marquee-infinite { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
 
         .container {
-            width: 100%; max-width: 410px;
-            padding: 110px 24px 60px; text-align: center;
-            position: relative;
-            animation: fadeIn 0.5s ease;
+            width: 100%; max-width: 410px; padding: 110px 24px 60px; text-align: center;
+            position: relative; animation: fadeIn 0.5s ease;
         }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
 
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        .profile-img {
-            width: 105px; height: 105px; border-radius: 35px;
-            object-fit: cover; border: 2px solid var(--border-pro);
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
-            margin-bottom: 15px;
+        .profile-img { 
+            width: 130px; height: 130px; border-radius: 40px; object-fit: cover; 
+            border: 3px solid rgba(59, 130, 246, 0.5);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6), 0 0 15px rgba(59, 130, 246, 0.3);
+            margin-bottom: 18px; transition: 0.3s;
         }
 
         h1 { margin: 10px 0 5px; font-size: 1.6rem; font-weight: 800; }
-        .tagline { font-size: 0.9rem; color: var(--text-dim); margin-bottom: 40px; }
+        .tagline { font-size: 0.9rem; color: var(--text-dim); margin-bottom: 25px; }
 
-        .links-grid { display: flex; flex-direction: column; gap: 12px; }
+        .btn-grid-special { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 25px; }
+        .btn-sub {
+            background: var(--card-dark); border: 1px solid var(--border-pro);
+            padding: 12px; border-radius: 12px; font-size: 0.8rem; font-weight: 700;
+            color: white; cursor: pointer; transition: 0.3s;
+        }
+        .btn-sub:hover { border-color: var(--accent-blue); background: rgba(59, 130, 246, 0.1); }
+        .btn-sub i { display: block; margin-bottom: 5px; color: var(--accent-blue); font-size: 1.1rem; }
 
+        .links-grid { display: flex; flex-direction: column; gap: 12px; margin-bottom: 30px; }
         .link-card {
-            background: var(--card-dark);
-            border: 1px solid var(--border-pro);
-            padding: 18px 22px; border-radius: 16px;
-            text-decoration: none; color: var(--text-white);
-            font-weight: 600; display: flex; align-items: center;
-            justify-content: space-between; transition: 0.3s;
-            backdrop-filter: blur(10px);
-            cursor: pointer;
-            z-index: 10;
+            background: var(--card-dark); border: 1px solid var(--border-pro);
+            padding: 18px 22px; border-radius: 16px; text-decoration: none;
+            color: var(--text-white); font-weight: 600; display: flex;
+            align-items: center; justify-content: space-between; transition: 0.3s;
         }
-
-        .link-card:hover {
-            border-color: var(--accent-blue);
-            transform: translateY(-3px);
-            background: rgba(28, 28, 33, 0.8);
-            box-shadow: 0 0 15px rgba(59, 130, 246, 0.2);
-        }
-
+        .link-card:hover { border-color: var(--accent-blue); transform: translateY(-3px); box-shadow: 0 5px 15px rgba(59, 130, 246, 0.2); }
         .link-card i { color: var(--accent-blue); font-size: 1.2rem; }
 
-        .social-wrap {
-            margin-top: 50px; display: grid;
-            grid-template-columns: repeat(4, 1fr); gap: 12px;
-        }
-
+        .social-wrap { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-bottom: 35px; }
         .social-box {
             background: var(--card-dark); border: 1px solid var(--border-pro);
-            padding: 16px 0; border-radius: 14px;
-            font-size: 1.4rem; color: var(--text-white); transition: 0.2s;
-            display: flex; justify-content: center; text-decoration: none;
-            z-index: 20;
+            padding: 16px 0; border-radius: 14px; color: var(--text-white);
+            display: flex; justify-content: center; text-decoration: none; transition: 0.2s;
         }
-
         .social-box:hover { background: var(--accent-blue); transform: translateY(-5px); }
 
-        footer { margin-top: 60px; font-size: 0.7rem; font-weight: 700; color: var(--text-dim); letter-spacing: 2px; }
+        .payment-info { 
+            background: rgba(255, 255, 255, 0.04); 
+            border-radius: 20px; padding: 20px 10px;
+            border: 1px solid var(--border-pro); margin-bottom: 20px;
+        }
+        .payment-info p { font-size: 0.65rem; color: var(--text-dim); font-weight: 800; margin-bottom: 15px; text-transform: uppercase; letter-spacing: 2px; }
+        .payment-logos { display: flex; justify-content: center; align-items: center; gap: 10px; }
+        
+        .pay-item-generic {
+            display: flex; flex-direction: column; justify-content: center; align-items: center;
+            background: white; border-radius: 8px; width: 75px; height: 38px; color: #00529C;
+        }
+        .pay-item-generic i { font-size: 1rem; margin-bottom: 1px; }
+        .pay-item-generic span { font-size: 0.55rem; font-weight: 800; text-transform: uppercase; }
+
+        .pay-item-qris {
+            display: flex; justify-content: center; align-items: center;
+            background: white; border-radius: 8px; width: 85px; height: 38px;
+        }
+        .pay-item-qris img { max-width: 85%; max-height: 85%; object-fit: contain; }
+
+        .hidden { display: none; }
+        .back-btn { background: none; border: none; color: var(--accent-blue); font-weight: 700; cursor: pointer; margin-bottom: 20px; display: flex; align-items: center; gap: 8px; }
+        
+        .benefit-grid { display: grid; grid-template-columns: 1fr; gap: 12px; text-align: left; }
+        .benefit-card {
+            background: rgba(255, 255, 255, 0.03); border: 1px solid var(--border-pro);
+            padding: 16px; border-radius: 16px; display: flex; align-items: flex-start; gap: 15px;
+            transition: 0.3s;
+        }
+        .benefit-card:hover { border-color: var(--accent-blue); background: rgba(59, 130, 246, 0.05); }
+        .benefit-card i { background: var(--accent-blue); color: white; width: 35px; height: 35px; border-radius: 10px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: 1rem; }
+        .benefit-content h4 { margin: 0 0 4px 0; font-size: 0.9rem; font-weight: 700; }
+        .benefit-content p { margin: 0; font-size: 0.75rem; color: var(--text-dim); line-height: 1.4; }
+
+        .testi-container { max-height: 500px; overflow-y: auto; padding-right: 8px; text-align: left; }
+        .testi-card { background: rgba(255,255,255,0.03); border-radius: 12px; padding: 15px; margin-bottom: 12px; border-left: 3px solid var(--accent-blue); }
+        .testi-name { font-weight: 800; font-size: 0.8rem; color: var(--accent-blue); display: block; margin-bottom: 4px; }
+        .testi-text { font-size: 0.75rem; color: var(--text-dim); font-style: italic; }
+        .rating-stars { color: var(--rating-yellow); font-size: 0.75rem; margin-left: 5px; }
+
+        footer { font-size: 0.7rem; font-weight: 700; color: var(--text-dim); letter-spacing: 2px; }
     </style>
 </head>
 <body onclick="fireworkEffect(event)">
@@ -143,66 +142,99 @@
 
     <div class="marquee-container">
         <div class="marquee-content">
-            <div class="marquee-item">🚀 BHARATAYUDHA WEB DEV • JOKI DIVISI PRO • TERIMA SAWERIA • FAST RESPOND • </div>
-            <div class="marquee-item">🚀 BHARATAYUDHA WEB DEV • JOKI DIVISI PRO • TERIMA SAWERIA • FAST RESPOND • </div>
+            <div class="marquee-item">
+                <span>PREMIUM WEB DEVELOPMENT</span> • <span>JOKI DIVISI</span> • <span>SELL / BUY ACCOUNT MARKET EFB</span> • <span>TRUSTED & FAST RESPONSE</span> —
+            </div>
+            <div class="marquee-item">
+                <span>PREMIUM WEB DEVELOPMENT</span> • <span>JOKI DIVISI</span> • <span>SELL / BUY ACCOUNT MARKET EFB </span> • <span>TRUSTED & FAST RESPONSE</span> —
+            </div>
         </div>
     </div>
 
-    <div class="container">
+    <div id="main-page" class="container">
         <img src="Log.jpg" alt="Profile" class="profile-img">
         <h1>@Bharatayudha<i class="fas fa-check-circle" style="color:var(--accent-blue); margin-left:5px;"></i></h1>
         <div class="tagline">Gaming Specialist & Creative Solutions</div>
 
+        <div class="btn-grid-special">
+            <button class="btn-sub" onclick="togglePage('benefit-page')"><i class="fas fa-rocket"></i> Keuntungan</button>
+            <button class="btn-sub" onclick="togglePage('testi-page')"><i class="fas fa-star"></i> 1000+ Testimoni</button>
+        </div>
+
         <div class="links-grid">
-            <a href="https://wa.me/6289651167331?text=Halo%20Bharatayudha,%20saya%20tertarik%20dengan%20layanan%20Website%20Development" target="_blank" class="link-card" style="border: 1px solid var(--accent-blue);">
-                <span>Website Development</span><i class="fa-solid fa-code"></i>
-            </a>
-
-            <a href="https://wa.me/6289651167331?text=Halo%20Bharatayudha,%20saya%20ingin%20order%20Joki%20Pro%20Service" target="_blank" class="link-card">
-                <span>Joki Pro Service</span><i class="fa-solid fa-gamepad"></i>
-            </a>
-
-            <a href="https://wa.me/6289651167331?text=Halo%20Bharatayudha,%20boleh%20lihat%20Catalog%20Account%20yang%20ready?" target="_blank" class="link-card">
-                <span>Catalog Accounts</span><i class="fa-solid fa-store"></i>
-            </a>
-            
-            <a href="https://sociabuzz.com/bharatayudha" target="_blank" class="link-card">
-                <span>Dukung via Sociabuzz</span><i class="fa-solid fa-dollar-sign"></i>
-            </a>
-
-            <a href="https://saweria.co/bharatayudha" target="_blank" class="link-card">
-                <span>Dukung via Saweria</span><i class="fa-solid fa-money-bill-wave"></i>
-            </a>
+            <a href="https://wa.me/6289651167331?text=Halo%20Bharatayudha" target="_blank" class="link-card"><span>Website Development</span><i class="fa-solid fa-code"></i></a>
+            <a href="https://chat.whatsapp.com/E83RHwS4YqF5KlkdRNsrbW" target="_blank" class="link-card"><span>Mabar eFootball</span><i class="fa-solid fa-trophy"></i></a>
+            <a href="https://wa.me/6289651167331?text=Order%20Joki" target="_blank" class="link-card"><span>Joki Divisi eFootball</span><i class="fa-solid fa-gamepad"></i></a>
+            <a href="https://chat.whatsapp.com/JVwENtKOtG8Cmpm0UJzirC" target="_blank" class="link-card"><span>Sell / Buy Account </span><i class="fa-solid fa-store"></i></a>
+            <a href="https://sociabuzz.com/cemilandivisi/tribe" target="_blank" class="link-card"><span>Support via Sociabuzz</span><i class="fa-solid fa-hand-holding-dollar"></i></a>
+            <a href="https://saweria.co/Bharatayudha" target="_blank" class="link-card"><span>Support via Saweria</span><i class="fa-solid fa-money-bill-wave"></i></a>
         </div>
 
         <div class="social-wrap">
-            <a href="https://facebook.com/bharatayudha" target="_blank" class="social-box"><i class="fa-brands fa-facebook-f"></i></a>
-            <a href="https://wa.me/6289651167331" target="_blank" class="social-box"><i class="fa-brands fa-whatsapp"></i></a>
-            <a href="https://instagram.com/bharatayudha" target="_blank" class="social-box"><i class="fa-brands fa-instagram"></i></a>
-            <a href="https://tiktok.com/@bharatayudha" target="_blank" class="social-box"><i class="fa-brands fa-tiktok"></i></a>
+            <a href="#" class="social-box"><i class="fa-brands fa-facebook-f"></i></a>
+            <a href="https://wa.me/6289651167331" class="social-box"><i class="fa-brands fa-whatsapp"></i></a>
+            <a href="https://www.instagram.com/bharatayudha77" class="social-box"><i class="fa-brands fa-instagram"></i></a>
+            <a href="https://www.tiktok.com/@_bharatayudha_" class="social-box"><i class="fa-brands fa-tiktok"></i></a>
         </div>
+
+        <div class="payment-info">
+            <p>Official Payment Partners</p>
+            <div class="payment-logos">
+                <div class="pay-item-generic"><i class="fas fa-university"></i><span>All Bank</span></div>
+                <div class="pay-item-qris"><img src="https://upload.wikimedia.org/wikipedia/commons/a/a2/Logo_QRIS.svg" alt="QRIS"></div>
+                <div class="pay-item-generic"><i class="fas fa-wallet"></i><span>E-Wallet</span></div>
+            </div>
+        </div>
+
         <footer>© 2026 BHARATAYUDHA CORE</footer>
     </div>
 
+    <div id="benefit-page" class="container hidden">
+        <button class="back-btn" onclick="togglePage('main-page')"><i class="fas fa-arrow-left"></i> Kembali</button>
+        <h2 style="margin-bottom: 25px;">Keunggulan Layanan</h2>
+        <div class="benefit-grid">
+            <div class="benefit-card"><i class="fas fa-shield-alt"></i><div class="benefit-content"><h4>Keamanan 100% Terjamin</h4><p>Metode manual murni tanpa intervensi pihak ketiga/software ilegal.</p></div></div>
+            <div class="benefit-card"><i class="fas fa-bolt"></i><div class="benefit-content"><h4>Layanan Sameday Service</h4><p>Pengerjaan diprioritaskan agar selesai dalam waktu sesingkat mungkin.</p></div></div>
+            <div class="benefit-card"><i class="fas fa-lock"></i><div class="benefit-content"><h4>Data Privacy Protocol</h4><p>Data akun dienkripsi dan dihapus permanen setelah transaksi selesai.</p></div></div>
+            <div class="benefit-card"><i class="fas fa-sync-alt"></i><div class="benefit-content"><h4>Real-time Monitoring</h4><p>Dapatkan laporan status pengerjaan secara berkala via WhatsApp.</p></div></div>
+            <div class="benefit-card"><i class="fas fa-user-shield"></i><div class="benefit-content"><h4>Full Refund Policy</h4><p>Garansi uang kembali jika layanan tidak mencapai target kesepakatan.</p></div></div>
+            <div class="benefit-card"><i class="fas fa-headset"></i><div class="benefit-content"><h4>24/7 Priority Support</h4><p>Dukungan teknis dan konsultasi gratis kapanpun Anda butuhkan.</p></div></div>
+        </div>
+    </div>
+
+    <div id="testi-page" class="container hidden">
+        <button class="back-btn" onclick="togglePage('main-page')"><i class="fas fa-arrow-left"></i> Kembali</button>
+        <h2 style="margin-bottom: 20px;">Client Feedback</h2>
+        <div id="testi-list" class="testi-container"></div>
+    </div>
+
     <script>
+        const testiData = [
+            {n: "Rizky P.", t: "Sangat profesional. Layanan selesai jauh lebih cepat dari estimasi!"},
+            {n: "Sultan_Ef", t: "Desain web-nya premium dan elegan. Sangat puas dengan hasilnya."},
+            {n: "Budi Santoso", t: "Satu-satunya tempat yang berani kasih garansi penuh. Terpercaya!"}
+        ];
+
+        function loadTestimonies() {
+            const list = document.getElementById('testi-list');
+            let content = "";
+            for(let i=0; i<50; i++) {
+                const item = testiData[i % testiData.length];
+                content += `<div class="testi-card"><span class="testi-name">${item.n} <span class="rating-stars">★★★★★</span></span><span class="testi-text">"${item.t}"</span></div>`;
+            }
+            list.innerHTML = content;
+        }
+
+        function togglePage(pageId) {
+            document.querySelectorAll('.container').forEach(c => c.classList.add('hidden'));
+            document.getElementById(pageId).classList.remove('hidden');
+            window.scrollTo(0,0);
+            if(pageId === 'testi-page') loadTestimonies();
+            if(pageId !== 'main-page') confetti({ particleCount: 30, spread: 50, origin: { y: 0.7 } });
+        }
+
         function fireworkEffect(e) {
-            const x = e.clientX / window.innerWidth;
-            const y = e.clientY / window.innerHeight;
-            confetti({
-                particleCount: 35,
-                spread: 70,
-                origin: { x, y },
-                colors: ['#ff0000', '#ffd700', '#ffffff', '#3b82f6'],
-                gravity: 1.2
-            });
-            confetti({
-                particleCount: 10,
-                angle: 90,
-                spread: 20,
-                origin: { x, y: y + 0.05 },
-                colors: ['#3b82f6', '#ffffff'],
-                velocity: 25
-            });
+            confetti({ particleCount: 15, spread: 40, origin: { x: e.clientX/window.innerWidth, y: e.clientY/window.innerHeight }, colors: ['#3b82f6', '#ffffff'] });
         }
     </script>
 </body>
